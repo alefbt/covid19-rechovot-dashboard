@@ -1,14 +1,9 @@
 <template>
-<!--
-  <q-page class="flex flex-center" :style-fn="myTweak" id="page-id-a">
-    <div class="col">
-      TEST
-    </div>
-  </q-page>
--->
 <q-page class="column justify-start">
+  aaa
 </q-page>
 </template>
+
 <style lang="stylus">
   #page-id-a
     background-color: #f0f0f0
