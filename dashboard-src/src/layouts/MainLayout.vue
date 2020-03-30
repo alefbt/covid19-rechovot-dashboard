@@ -56,6 +56,9 @@
 
     <q-footer elevated class="bg-grey-3 text-black">
       <q-toolbar>
+        <small>
+           מוקד משרד הבריאות בטלפון 5400* | כללית 2700* | מכבי 3555* | מאוחדת 3833* | לאומית 507* | מד"א 101
+        </small>
         <q-space></q-space>
         <small>
           כל הזכויות שמורות 

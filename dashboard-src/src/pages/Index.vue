@@ -1,6 +1,14 @@
 <template>
-<q-page class="column justify-start">
-  <LayoutBuilder :data="currentData"></LayoutBuilder>
+<q-page class="column justify-start" style="overflow: hidden;">
+   <transition
+  appear
+  enter-active-class="animated slideInRight"
+  leave-active-class="animated slideOutDown" 
+  v-on:after-enter="onAfterEnter"
+  v-on:after-leave="onAfterLeave"
+      >
+      <LayoutBuilder v-if="show" :data="currentData"></LayoutBuilder>
+   </transition>
 </q-page>
 </template>
 
@@ -18,97 +26,79 @@ export default {
       LayoutBuilder
   },
   mounted(){
+    this.loadData()
     this.startSlider()
   },
   data () {
     return {
+      show: false,
       slideItem: 0,
-      slides: [
-        {
-          type:"LayoutCols",
-          timeout: 5000,
-          items:[
-            {
-              type: "images",
-              images: [
-                {src:"/statics/moh-graphics/general-isolation-he.jpg"},
-                {src:"/statics/moh-graphics/corona-signs.png"}
-              ]
-            },
-            {
-              type: "text",
-              text: "<div class=\"row\"> <div class=\"col\" ><h1>ssssss</h1>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales nulla ac orci sollicitudin, at dapibus libero porttitor. Proin eleifend mattis dolor gravida molestie. Vestibulum quis nibh sed eros imperdiet porta eu sed velit. Duis finibus tincidunt lectus nec pretium. Quisque at cursus magna, ut bibendum ante. Phasellus cursus tincidunt sagittis. Nam at posuere erat. Pellentesque non sapien et nisl interdum congue. Praesent id porttitor lacus. Donec et cursus odio, et ornare lorem. Integer fringilla, quam consectetur laoreet fringilla, lorem nisi faucibus odio, et vulputate ipsum tortor sit amet orci. Nam congue varius ligula in placerat. Nam dui felis, porttitor quis blandit non, fringilla mattis sem. Duis ut elit semper, imperdiet purus nec, cursus turpis. Donec sit amet erat id diam ultricies varius.  Nulla convallis, mi quis vulputate sodales, eros est pulvinar massa, eget consequat sapien erat vitae nulla. Aliquam pretium quam lorem, at commodo erat bibendum nec. Curabitur laoreet nibh eu massa dapibus tristique. Duis congue dui mauris, in egestas enim mattis convallis. Praesent ornare augue ut tellus lacinia, nec iaculis lectus faucibus. Donec ut sem sit amet lectus dapibus hendrerit vitae ullamcorper massa. Morbi sed lobortis mi, ac luctus eros. Proin mattis justo id tempor placerat. Morbi tempor blandit libero feugiat facilisis. Nam hendrerit tincidunt odio, a eleifend erat tristique id. Vivamus vel diam faucibus, tincidunt libero ut, euismod ipsum. Curabitur placerat tincidunt massa, sed vestibulum sapien semper non. Pellentesque auctor urna ut orci luctus, sed ullamcorper eros ullamcorper. Suspendisse quis magna non sapien tristique sagittis nec condimentum mauris. Phasellus gravida eleifend blandit. Maecenas aliquam pretium lorem id mollis.  In molestie velit in volutpat bibendum. Aenean vitae nulla mollis nunc tempus interdum. Fusce quis lectus tincidunt eros rutrum pretium in vel metus. Morbi eleifend malesuada gravida. Duis quis fringilla ligula. Donec sodales sagittis massa, quis faucibus augue malesuada et. Ut eu lobortis mauris. Curabitur pharetra nisi eu eros tincidunt, in porttitor purus pretium. Maecenas congue nec orci vel consequat. Vivamus nec ipsum id urna rhoncus euismod. Nam eget varius dui. Etiam a nibh quis nulla commodo lacinia. Mauris vitae odio vulputate, imperdiet sem at, ultrices sem. Proin et neque tellus. Maecenas turpis velit, sollicitudin ac luctus vitae, finibus ac nisi.  Donec nec ligula nibh. Donec pretium elementum tempor. Aenean blandit, dui sit amet accumsan bibendum, risus eros tempor enim, quis dignissim arcu sapien a justo. Vestibulum rhoncus pharetra purus, ut lobortis massa scelerisque vel. Nunc accumsan rhoncus leo et dictum. Pellentesque semper placerat nibh, sed tristique orci luctus ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque sagittis nisi vitae tellus faucibus ornare. Morbi vulputate gravida nulla, a convallis nulla. Praesent condimentum eros eu erat placerat, tristique ornare arcu porttitor. Aliquam consectetur ultricies nisi, vel commodo diam pretium vulputate. Duis a ligula interdum, pharetra sem ut, ullamcorper orci.  In hac habitasse platea dictumst. Proin ornare vel massa quis semper. Sed dictum elit vel velit imperdiet accumsan. Phasellus metus nisl, bibendum non elit eget, luctus suscipit felis. Duis ultricies dictum mi pulvinar feugiat. Mauris volutpat a tellus quis dapibus. Donec dignissim mauris justo, vitae congue nulla vehicula sit amet. Nullam magna lectus, sagittis sed risus at, gravida dignissim mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam ullamcorper facilisis nisl. Ut imperdiet enim eget mattis ultrices. In a enim accumsan, ullamcorper augue at, egestas velit. Nam ornare lobortis sollicitudin. </div></div>",
-            }
-          ]
-        },
-
-        {
-          type:"LayoutCols",
-          timeout: 5000,
-          items:[
-            {
-              type: "images",
-              images: [
-                {src:"/statics/moh-graphics/general-isolation-he.jpg"},
-                {src:"/statics/moh-graphics/corona-signs.png"}
-              ]
-            }
-          ]
-        },
-
-        {
-          type:"LayoutCols",
-          timeout: 5000,
-          items:[
-            {
-              type: "text",
-              text: "<div class=\"row\"> <div class=\"col\" ><h1>ssssss</h1>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales nulla ac orci sollicitudin, at dapibus libero porttitor. Proin eleifend mattis dolor gravida molestie. Vestibulum quis nibh sed eros imperdiet porta eu sed velit. Duis finibus tincidunt lectus nec pretium. Quisque at cursus magna, ut bibendum ante. Phasellus cursus tincidunt sagittis. Nam at posuere erat. Pellentesque non sapien et nisl interdum congue. Praesent id porttitor lacus. Donec et cursus odio, et ornare lorem. Integer fringilla, quam consectetur laoreet fringilla, lorem nisi faucibus odio, et vulputate ipsum tortor sit amet orci. Nam congue varius ligula in placerat. Nam dui felis, porttitor quis blandit non, fringilla mattis sem. Duis ut elit semper, imperdiet purus nec, cursus turpis. Donec sit amet erat id diam ultricies varius.  Nulla convallis, mi quis vulputate sodales, eros est pulvinar massa, eget consequat sapien erat vitae nulla. Aliquam pretium quam lorem, at commodo erat bibendum nec. Curabitur laoreet nibh eu massa dapibus tristique. Duis congue dui mauris, in egestas enim mattis convallis. Praesent ornare augue ut tellus lacinia, nec iaculis lectus faucibus. Donec ut sem sit amet lectus dapibus hendrerit vitae ullamcorper massa. Morbi sed lobortis mi, ac luctus eros. Proin mattis justo id tempor placerat. Morbi tempor blandit libero feugiat facilisis. Nam hendrerit tincidunt odio, a eleifend erat tristique id. Vivamus vel diam faucibus, tincidunt libero ut, euismod ipsum. Curabitur placerat tincidunt massa, sed vestibulum sapien semper non. Pellentesque auctor urna ut orci luctus, sed ullamcorper eros ullamcorper. Suspendisse quis magna non sapien tristique sagittis nec condimentum mauris. Phasellus gravida eleifend blandit. Maecenas aliquam pretium lorem id mollis.  In molestie velit in volutpat bibendum. Aenean vitae nulla mollis nunc tempus interdum. Fusce quis lectus tincidunt eros rutrum pretium in vel metus. Morbi eleifend malesuada gravida. Duis quis fringilla ligula. Donec sodales sagittis massa, quis faucibus augue malesuada et. Ut eu lobortis mauris. Curabitur pharetra nisi eu eros tincidunt, in porttitor purus pretium. Maecenas congue nec orci vel consequat. Vivamus nec ipsum id urna rhoncus euismod. Nam eget varius dui. Etiam a nibh quis nulla commodo lacinia. Mauris vitae odio vulputate, imperdiet sem at, ultrices sem. Proin et neque tellus. Maecenas turpis velit, sollicitudin ac luctus vitae, finibus ac nisi.  Donec nec ligula nibh. Donec pretium elementum tempor. Aenean blandit, dui sit amet accumsan bibendum, risus eros tempor enim, quis dignissim arcu sapien a justo. Vestibulum rhoncus pharetra purus, ut lobortis massa scelerisque vel. Nunc accumsan rhoncus leo et dictum. Pellentesque semper placerat nibh, sed tristique orci luctus ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque sagittis nisi vitae tellus faucibus ornare. Morbi vulputate gravida nulla, a convallis nulla. Praesent condimentum eros eu erat placerat, tristique ornare arcu porttitor. Aliquam consectetur ultricies nisi, vel commodo diam pretium vulputate. Duis a ligula interdum, pharetra sem ut, ullamcorper orci.  In hac habitasse platea dictumst. Proin ornare vel massa quis semper. Sed dictum elit vel velit imperdiet accumsan. Phasellus metus nisl, bibendum non elit eget, luctus suscipit felis. Duis ultricies dictum mi pulvinar feugiat. Mauris volutpat a tellus quis dapibus. Donec dignissim mauris justo, vitae congue nulla vehicula sit amet. Nullam magna lectus, sagittis sed risus at, gravida dignissim mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam ullamcorper facilisis nisl. Ut imperdiet enim eget mattis ultrices. In a enim accumsan, ullamcorper augue at, egestas velit. Nam ornare lobortis sollicitudin. </div></div>",
-            }
-          ]
-        }
-
-      ]
+      slides: []
     }
   },  
   computed: {
     currentData(){
+      if(!this.isCurrentSlideValid())
+        return {}
+
       return this.slides[this.slideItem];
     }
   },
    methods: {
-     nextSlide() {
-       if(this.slideItem < 0 || this.slideItem >= this.slides.length-1)
-        this.slideItem=0
-       else
-        this.slideItem++
+     loadData(){
+       var vm = this;
 
-       const timeoutInterval = (
-         this.slides[this.slideItem]
-         && this.slides[this.slideItem].timeout 
-         && this.slides[this.slideItem].timeout>3000)
-         ? this.slides[this.slideItem].timeout : 3000
+       this.$axios.get('/statics/data.json')
+          .then((response) => {
+            vm.slides = response.data['slides']
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+     },
+     isCurrentSlideValid(){
+      if(!this.slides || this.slides.length==0)
+        return false
 
-        setTimeout(() => {
+      if(this.slideItem > this.slides.length-1 || this.slideItem < 0)
+        return false
+
+      return true
+     },
+     onAfterEnter(){
+        this.setTimerNextSlide()
+     },
+
+     onAfterLeave(){
+       this.show = true
+     },
+
+     setTimerNextSlide(){
+        const timeoutInterval = (
+          this.isCurrentSlideValid()
+          && this.slides[this.slideItem].timeout 
+          && this.slides[this.slideItem].timeout>3)
+         ? this.slides[this.slideItem].timeout : 3
+
+        setTimeout(() => { 
+          this.show = false
           this.nextSlide() 
-        }, timeoutInterval);
+          }, timeoutInterval*1000);
+     },
+     nextSlide() {
+        if(!this.isCurrentSlideValid())
+          this.slideItem=0
 
+        this.slideItem++  
+        
+        if(!this.isCurrentSlideValid())   
+          this.slideItem=0 
+
+        console.log(this.slideItem);
      },
      startSlider () {
-
-       const timeoutInterval = (this.slides[0].timeout && this.slides[0].timeout>3000)?this.slides[0].timeout:3000
-
-        setTimeout(() => {
-          this.nextSlide() 
-        }, timeoutInterval);
-     },
-    myTweak (offset) {
-      // "offset" is a Number (pixels) that refers to the total
-      // height of header + footer that occupies on screen,
-      // based on the QLayout "view" prop configuration
-
-      // this is actually what the default style-fn does in Quasar
-      return { minHeight: offset ? `calc(100vh - ${offset}px)` : '100vh' }
-    }
+        this.show = true
+     }
   }
 }
 </script>
