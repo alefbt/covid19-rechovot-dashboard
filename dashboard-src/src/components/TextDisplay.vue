@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute fit row q-pa-md">
+  <div class="fit row q-pa-md">
     <div class="td-full col" v-html="text">
       
     </div>
@@ -8,10 +8,14 @@
 
 <style lang="stylus">
 div.td-full
-  font-size: 5vh;
+  font-size: 3vh;
   div
-    column-count: 3;
-    column-gap: 40px;
+    @media screen and (min-width: 600px) and (max-width: 1500px)
+      column-count: 2;
+      column-gap: 50px;
+    @media screen and (min-width: 1500px)
+      column-count: 3;
+      column-gap: 50px;
   
   h1
     font-size: 3em

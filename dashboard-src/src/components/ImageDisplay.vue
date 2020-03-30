@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute fit row q-pa-md">
+  <div class="fit row q-pa-md">
     <div class="col">
       <q-carousel
             animated
@@ -8,7 +8,7 @@
             autoplay
             transition-prev="slide-right"
             transition-next="slide-left"
-            height="80vh"
+            height="100%"
             draggable="false"
           >
         <q-carousel-slide v-for="(img, index) in images" v-bind:key="index" :name="index" :img-src="img.src" />

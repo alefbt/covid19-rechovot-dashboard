@@ -56,11 +56,14 @@
 
     <q-footer elevated class="bg-grey-3 text-black">
       <q-toolbar>
-        <div>
+        <q-space></q-space>
+        <small>
           כל הזכויות שמורות 
 
-          ל<a href="https://www.alefbt.com/">אלףבט וקורוטקין</a>
-        </div>
+          ל<a href="https://www.alefbt.com/">אלףבט</a>
+          ו- <a href="https://www.alefbt.com/">קורוטקין</a>
+        </small>
+
       </q-toolbar>
     </q-footer>
   </q-layout>
