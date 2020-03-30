@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d2aed2ea392442a830f0",
-    "url": "css/2.819e46bb.css"
+    "revision": "1b88c0ed3bfca333b204",
+    "url": "css/2.0813398c.css"
   },
   {
-    "revision": "a6bae1f4793b7e4f2ebf",
-    "url": "css/3.eedfc5e3.css"
+    "revision": "73107e58fb6097d90ba8",
+    "url": "css/3.819e46bb.css"
   },
   {
-    "revision": "f69758095b9681376ec5",
+    "revision": "b8d6da2497ca975cb834",
     "url": "css/app.fa8c2d15.css"
   },
   {
@@ -44,28 +44,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.0509ab09.woff2"
   },
   {
-    "revision": "82a5921e3ec6d58be0a94478623f6ce3",
+    "revision": "e200c6b2dafda66ea8deee3d5ad95cec",
     "url": "index.html"
   },
   {
-    "revision": "d2aed2ea392442a830f0",
-    "url": "js/2.d2aed2ea.js"
+    "revision": "1b88c0ed3bfca333b204",
+    "url": "js/2.1b88c0ed.js"
   },
   {
-    "revision": "a6bae1f4793b7e4f2ebf",
-    "url": "js/3.a6bae1f4.js"
+    "revision": "73107e58fb6097d90ba8",
+    "url": "js/3.73107e58.js"
   },
   {
     "revision": "62a0d345cb8cb04e862d",
     "url": "js/4.62a0d345.js"
   },
   {
-    "revision": "f69758095b9681376ec5",
-    "url": "js/app.c88fedbe.js"
+    "revision": "b8d6da2497ca975cb834",
+    "url": "js/app.ef074e14.js"
   },
   {
-    "revision": "96c3cc0df835c17dc215",
-    "url": "js/vendor.96c3cc0d.js"
+    "revision": "bb9e555f87ac1abf293a",
+    "url": "js/vendor.bb9e555f.js"
   },
   {
     "revision": "f455efade78431797776357a527a30b7",
@@ -134,5 +134,13 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ba58d8b825312a31114fb91484dadbeb",
     "url": "statics/icons/safari-pinned-tab.svg"
+  },
+  {
+    "revision": "939f6c2a56927b92fdd06a069bee8767",
+    "url": "statics/moh-graphics/corona-signs.png"
+  },
+  {
+    "revision": "7e6d8cb87c14c83f1c2fbba3d0004ea1",
+    "url": "statics/moh-graphics/general-isolation-he.jpg"
   }
 ]);
