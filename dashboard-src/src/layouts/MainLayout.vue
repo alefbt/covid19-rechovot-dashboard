@@ -72,20 +72,16 @@
   transition: all 2.5s
 </style>
 <script>
-import EssentialLink from 'components/EssentialLink'
-
 export default {
   name: 'MainLayout',
   mounted(){
     setInterval(f=>{
-      this.test_met()
+      this.getNewsItem()
     },3000)
   },
-  components: {
-    EssentialLink
-  },
+
   methods: {
-    test_met(){
+    getNewsItem(){
       this.items.splice(0, 0, {"key":'idx-' + this.items.length});
       if(this.items.length>30)
         this.items.pop()
