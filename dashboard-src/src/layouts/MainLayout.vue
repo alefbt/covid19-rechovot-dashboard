@@ -9,45 +9,32 @@
          <q-toolbar-title>
             מערכת <strong>עדכונים</strong>
           </q-toolbar-title>
-          
           <div>
-            test
+            PREPROD
           </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer content-style="overflow: hidden;" v-model="leftDrawer" side="left" bordered>
- 
-
-      <transition-group
-  appear
-  enter-active-class="animated slideInTop"
-  leave-active-class="animated fadeOut" 
-      >
-      <q-card class="info-card" v-for="item in items" :key="item.key">
+    <q-drawer v-on:click="getNewsItem" class="cursor-pointer" content-style="overflow: hidden;" v-model="leftDrawer" side="left" bordered>
+      <q-card 
+       style="margin: 1em; background-color: #f0f0f0;"
+      class="info-card" 
+      v-for="item in items" :key="item.key">
         <q-card-section>
-          <div class="text-h6">Our Changing Planet</div>
-          <div class="text-subtitle2"> </div>
-        </q-card-section> 
-
-        <q-card-section>
-          <p>
-            ur
-          </p>
+          <div class="text-h6">{{item.title}}</div>
+          <div v-html="item.text"></div>
         </q-card-section>
 
         <q-card-actions>
           <q-item-label caption>
-            <q-icon icon="event"></q-icon> 5:30PM
+            <q-icon icon="event"></q-icon> {{item.updatedAt}}
 
             עודכן ע"י:
-            <strong>John Doe</strong>
+            <strong>{{item.updatedBy}}</strong>
           </q-item-label>
         </q-card-actions>
 
       </q-card>
-
-      </transition-group>
     </q-drawer>
 
     <q-page-container>
@@ -75,7 +62,10 @@
 
 <style lang="stylus">
 .info-card
-  transition: all 2.5s
+  .text-h6
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    font-weight: bold;
 </style>
 <script>
 import { uid,extend } from 'quasar'
@@ -87,7 +77,7 @@ export default {
 
     setInterval(f=>{
       this.getNewsItem()
-    },3000)
+    },5000)
   },
 
   methods: {
@@ -96,7 +86,8 @@ export default {
 
        this.$axios.get('/statics/data-flash.json')
           .then((response) => {
-            vm.fulldata = response.data.data            
+            vm.fulldata = response.data.data      
+            this.getNewsItem()      
           })
           .catch((e) => {
             console.log("getFullData",e)
@@ -104,12 +95,15 @@ export default {
 
     },
     getNewsItem(){
-
-      if(this.fulldataPointer < 0 || this.fulldataPointer > this.fulldata.length)
+      if(this.fulldataPointer < 0 || this.fulldataPointer >= this.fulldata.length)
         this.fulldataPointer = 0
 
-      const data = extend(false, {"key":uid()}, this.fulldata[this.fulldataPointer]) //JSON.parse(JSON.stringify(this.fulldata[this.fulldataPointer])))
+      const data = extend(false, {"key":uid()}, this.fulldata[this.fulldataPointer])
+
       this.items.splice(0, 0, data);
+      
+      this.fulldataPointer++
+
       if(this.items.length>20)
         this.items.pop()
     }

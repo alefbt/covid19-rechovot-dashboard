@@ -2,12 +2,9 @@
   <div class="fit row q-pa-md">
     <div class="col">
       <q-carousel
-            animated
             v-model="slide"
             infinite
             autoplay
-            transition-prev="slide-right"
-            transition-next="slide-left"
             height="100%"
             draggable="false"
           >
@@ -27,7 +24,7 @@
 
 <script>
 export default {
-  name: 'ImageDisplay',
+  name: 'ImagesDisplay',
   props: {
     data: {
       type: Object,
@@ -35,10 +32,17 @@ export default {
     }
   },
 
+  mounted(){
+    console.log("IMAGES:",this.data)
+  },
+  computed: {
+    images(){
+      return (this.data.images)?this.data.images:[this.data]
+    }
+  },
   data(){
     return {
-      slide: 0,
-      images: this.data.images
+      slide: 0
     }
   },
   components: {}

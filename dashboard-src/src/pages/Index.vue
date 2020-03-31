@@ -1,21 +1,18 @@
 <template>
-<q-page class="column justify-start" style="overflow: hidden;">
-   <transition
-  appear
-  enter-active-class="animated slideInRight"
-  leave-active-class="animated slideOutDown" 
-  v-on:after-enter="onAfterEnter"
-  v-on:after-leave="onAfterLeave"
-      >
-      <LayoutBuilder v-if="show" :data="currentData"></LayoutBuilder>
-   </transition>
+<q-page class="column justify-start cursor-pointer" style="overflow: hidden;" v-on:click="nextSlide">
+   <LayoutBuilder :data="currentData"></LayoutBuilder>
 </q-page>
 </template>
+
+
 
 <style lang="stylus">
   #page-id-a
     background-color: #f0f0f0
 </style>
+
+
+
 <script>
 import LayoutBuilder from 'components/layouts/LayoutBuilder'
 
@@ -27,11 +24,10 @@ export default {
   },
   mounted(){
     this.loadData()
-    this.startSlider()
   },
   data () {
     return {
-      show: false,
+      timeoutObj: null,
       slideItem: 0,
       slides: []
     }
@@ -50,7 +46,13 @@ export default {
 
        this.$axios.get('/statics/data.json')
           .then((response) => {
+            console.log(response.data)
             vm.slides = response.data['slides']
+            
+            if(vm.slides.length>0)
+              vm.slideItem = 0
+
+            vm.setTimerNextSlide()
           })
           .catch((e) => {
             console.log(e)
@@ -60,19 +62,11 @@ export default {
       if(!this.slides || this.slides.length==0)
         return false
 
-      if(this.slideItem > this.slides.length-1 || this.slideItem < 0)
+      if(this.slideItem < 0 || this.slideItem >= this.slides.length )
         return false
 
       return true
      },
-     onAfterEnter(){
-        this.setTimerNextSlide()
-     },
-
-     onAfterLeave(){
-       this.show = true
-     },
-
      setTimerNextSlide(){
         const timeoutInterval = (
           this.isCurrentSlideValid()
@@ -80,8 +74,16 @@ export default {
           && this.slides[this.slideItem].timeout>3)
          ? this.slides[this.slideItem].timeout : 3
 
-        setTimeout(() => { 
-          this.show = false
+        if(this.slides.length>0)
+        {
+          console.log(this.slides)
+          console.log("Slide: ", this.slideItem, "Time:", timeoutInterval, this.slides[this.slideItem] , this.slides[this.slideItem].timeout )
+        }
+
+        if(this.timeoutObj)
+          clearTimeout(this.timeoutObj) 
+
+        this.timeoutObj = setTimeout(() => { 
           this.nextSlide() 
           }, timeoutInterval*1000);
      },
@@ -90,14 +92,11 @@ export default {
           this.slideItem=0
 
         this.slideItem++  
-        
+
         if(!this.isCurrentSlideValid())   
           this.slideItem=0 
-
-        console.log(this.slideItem);
-     },
-     startSlider () {
-        this.show = true
+        
+        this.setTimerNextSlide()
      }
   }
 }
