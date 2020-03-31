@@ -56,9 +56,9 @@
 
     <q-footer elevated class="bg-grey-3 text-black">
       <q-toolbar>
-        <small>
+        <div>
            מוקד משרד הבריאות בטלפון 5400* | כללית 2700* | מכבי 3555* | מאוחדת 3833* | לאומית 507* | מד"א 101
-        </small>
+        </div>
         <q-space></q-space>
         <small>
           כל הזכויות שמורות 
@@ -78,23 +78,46 @@
   transition: all 2.5s
 </style>
 <script>
+import { uid,extend } from 'quasar'
+
 export default {
   name: 'MainLayout',
   mounted(){
+    this.getFullData()
+
     setInterval(f=>{
       this.getNewsItem()
     },3000)
   },
 
   methods: {
+    getFullData(){
+       var vm = this;
+
+       this.$axios.get('/statics/data-flash.json')
+          .then((response) => {
+            vm.fulldata = response.data.data            
+          })
+          .catch((e) => {
+            console.log("getFullData",e)
+          })
+
+    },
     getNewsItem(){
-      this.items.splice(0, 0, {"key":'idx-' + this.items.length});
-      if(this.items.length>30)
+
+      if(this.fulldataPointer < 0 || this.fulldataPointer > this.fulldata.length)
+        this.fulldataPointer = 0
+
+      const data = extend(false, {"key":uid()}, this.fulldata[this.fulldataPointer]) //JSON.parse(JSON.stringify(this.fulldata[this.fulldataPointer])))
+      this.items.splice(0, 0, data);
+      if(this.items.length>20)
         this.items.pop()
     }
   },
   data () {
     return {
+      fulldata: [],
+      fulldataPointer:0,
       leftDrawer: true,
       items: [],
       show: true

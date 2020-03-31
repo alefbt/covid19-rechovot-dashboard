@@ -47,7 +47,8 @@ module.exports = function (ctx) {
       components: [
         'QCard',
         'QCardSection',
-        'QCardActions'
+        'QCardActions',
+        'QEditor'
       ],
       directives: [],
 
