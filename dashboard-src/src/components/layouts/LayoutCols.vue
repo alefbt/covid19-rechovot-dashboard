@@ -1,8 +1,8 @@
 <template>
-  <div class="absolute fit row q-pa-md">
+  <div class="absolute fit row q-pa-md" v-bind:class="classObject">
     <div class="col layout-col" v-for="(item, itemIdx) in columnItems" v-bind:key="itemIdx">
       <TextDisplay v-if="item.type=='text'" :data="item"></TextDisplay>
-      <ImageDisplay v-if="item.type=='images'" :data="item"></ImageDisplay>
+      <ImagesDisplay v-if="item.type=='images' || item.type=='image'" :data="item"></ImagesDisplay>
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@
   height: 100%
 </style>
 <script>
-import ImageDisplay from 'components/ImageDisplay'
+import ImagesDisplay from 'components/ImagesDisplay'
 import TextDisplay from 'components/TextDisplay'
 
 export default {
@@ -23,14 +23,23 @@ export default {
       required: true
     }
   },
+
+  mounted(){
+    console.log("ITEM:",this.layoutItem)
+  },
   computed:{
+    classObject(){
+      var v ={};
+      v['onecolumn-layout'] = !(this.layoutItem.items && this.layoutItem.items.length>1)
+      return v;
+    },
     columnItems() {
-      return this.layoutItem.items;
+      return (this.layoutItem.items)?this.layoutItem.items:[this.layoutItem];
     }
   },
   
   components: {
-    ImageDisplay,
+    ImagesDisplay,
     TextDisplay,
   }
 }

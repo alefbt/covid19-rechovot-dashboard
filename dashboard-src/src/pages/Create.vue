@@ -2,6 +2,17 @@
 <q-page class="column justify-start" padding="">
    <div class="row">
      <div class="col">
+          כותרת:
+          <input type="text" name="" id="" v-model="title">
+<br/>
+          עודכן ע"י:
+          <input type="text" name="" id="" v-model="updatedBy">
+<br/>
+          עודכן ב:
+          <input type="text" name="" id="" v-model="updatedAt">
+<br/>
+
+          תוכן:
            <q-editor v-model="editor" min-height="15rem"
            :toolbar="[
         [
@@ -11,17 +22,10 @@
             fixedLabel: true,
             list: 'only-icons',
             options: ['left', 'center', 'right', 'justify']
-          },
-          {
-            label: $q.lang.editor.align,
-            icon: $q.iconSet.editor.align,
-            fixedLabel: true,
-            options: ['left', 'center', 'right', 'justify']
           }
         ],
         ['bold', 'italic', 'strike', 'underline', 'subscript', 'superscript'],
-        ['token', 'hr', 'link', 'custom_btn'],
-        ['print', 'fullscreen'],
+        ['hr', 'link',], 
         [
           {
             label: $q.lang.editor.formatting,
@@ -61,6 +65,8 @@
             list: 'no-icons',
             options: [
               'default_font',
+              'david400',
+              'david500',
               'arial',
               'arial_black',
               'comic_sans',
@@ -79,6 +85,8 @@
         ['viewsource']
       ]"
       :fonts="{
+        david400: 'David Libre n400',
+        david500: 'David Libre n500',
         arial: 'Arial',
         arial_black: 'Arial Black',
         comic_sans: 'Comic Sans MS',
@@ -93,11 +101,15 @@
        <q-card flat bordered>
         <q-card-section>
           <label for="">הדבק טקסט פשוט:</label>
-          <textarea style="white-space: pre-line; width: 100%; height: 100%" v-model="editor"></textarea>
+          <textarea style="direction: ltr; white-space: pre-line; width: 100%; height: 100%" v-model="editor"></textarea>
         </q-card-section>
         <q-card-section>
           <label for="">תוצאה ל JSON</label>
           <textarea readonly style="white-space: pre-line; width: 100%; height: 100%" v-model="currentData"></textarea>
+        </q-card-section>
+        <q-card-section>
+          <label for="">טקסט פשוט</label>
+          <textarea style="white-space: pre-line; width: 100%; height: 100%"></textarea>
         </q-card-section>
       </q-card>
      </div>
@@ -118,14 +130,20 @@ export default {
   data () {
     return {
       data: {},
-      editor:""
+      editor:"",
+      title: "",
+      updatedAt: "",
+      updatedBy: ""
     }
   },  
   computed: {
     currentData(){
       let o = {
         "type": "text",
-        "text": this.editor
+        "title": this.title,
+        "text": this.editor,
+        "updatedAt": this.updatedAt,
+        "updatedBy": this.updatedBy
       }
       return JSON.stringify(o)
     }
