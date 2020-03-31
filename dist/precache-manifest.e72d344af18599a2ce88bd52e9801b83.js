@@ -1,15 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "95d83a5592d08bd765d1",
-    "url": "css/2.0d262863.css"
+    "revision": "bf1a1c353362d37a53dd",
+    "url": "css/2.554056e9.css"
   },
   {
-    "revision": "fbe77f6ce9f9685ed301",
-    "url": "css/3.819e46bb.css"
+    "revision": "7b7e627075dbb1912b55",
+    "url": "css/3.9e271266.css"
   },
   {
-    "revision": "96ef7aa37d7dd5c9296a",
-    "url": "css/app.28988539.css"
+    "revision": "08c885d952714fdf6872",
+    "url": "css/4.c1fab654.css"
+  },
+  {
+    "revision": "aabd546083ed3242df85",
+    "url": "css/app.d18a2ce3.css"
   },
   {
     "revision": "5cb7edfceb233100075dc9a1e12e8da3",
@@ -36,6 +40,38 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "fonts/KFOmCnqEu92Fr1Mu4mxM.60fa3c06.woff"
   },
   {
+    "revision": "5370668e79c8b17970145e94016515ed",
+    "url": "fonts/david-libre-v4-hebrew_latin-500.5370668e.woff"
+  },
+  {
+    "revision": "5ad92996555f2f1c4c2e549b3230ea2a",
+    "url": "fonts/david-libre-v4-hebrew_latin-500.5ad92996.ttf"
+  },
+  {
+    "revision": "89d74dc0347c8fd18aa9edd3829754c8",
+    "url": "fonts/david-libre-v4-hebrew_latin-500.89d74dc0.woff2"
+  },
+  {
+    "revision": "ae0dd80284499e41d52f67c32a4f72af",
+    "url": "fonts/david-libre-v4-hebrew_latin-500.ae0dd802.eot"
+  },
+  {
+    "revision": "1c45e4e5e9b3d58cefe9ae6ddf68adaa",
+    "url": "fonts/david-libre-v4-hebrew_latin-regular.1c45e4e5.eot"
+  },
+  {
+    "revision": "4ea080320832ed86139aec756256b8c1",
+    "url": "fonts/david-libre-v4-hebrew_latin-regular.4ea08032.woff"
+  },
+  {
+    "revision": "67980b4bb5bde33aee13a5b507c0c17b",
+    "url": "fonts/david-libre-v4-hebrew_latin-regular.67980b4b.ttf"
+  },
+  {
+    "revision": "8986ef5d87ea501fe1d200198740f2bc",
+    "url": "fonts/david-libre-v4-hebrew_latin-regular.8986ef5d.woff2"
+  },
+  {
     "revision": "29b882f018fa6fe75fd338aaae6235b8",
     "url": "fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNa.29b882f0.woff"
   },
@@ -44,28 +80,40 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.0509ab09.woff2"
   },
   {
-    "revision": "d23909c8e96bec5a013b77850d7125b5",
+    "revision": "8ff8fb8030a6cc2a618e1ca10b5e0bbb",
+    "url": "img/david-libre-v4-hebrew_latin-500.8ff8fb80.svg"
+  },
+  {
+    "revision": "0037772ae945f32861d5b77a4b93fd2f",
+    "url": "img/david-libre-v4-hebrew_latin-regular.0037772a.svg"
+  },
+  {
+    "revision": "e4550a7eba496fc7366b4f268fe239cf",
     "url": "index.html"
   },
   {
-    "revision": "95d83a5592d08bd765d1",
-    "url": "js/2.95d83a55.js"
+    "revision": "bf1a1c353362d37a53dd",
+    "url": "js/2.bf1a1c35.js"
   },
   {
-    "revision": "fbe77f6ce9f9685ed301",
-    "url": "js/3.fbe77f6c.js"
+    "revision": "7b7e627075dbb1912b55",
+    "url": "js/3.7b7e6270.js"
   },
   {
-    "revision": "62a0d345cb8cb04e862d",
-    "url": "js/4.62a0d345.js"
+    "revision": "08c885d952714fdf6872",
+    "url": "js/4.08c885d9.js"
   },
   {
-    "revision": "96ef7aa37d7dd5c9296a",
-    "url": "js/app.ba5926a2.js"
+    "revision": "9c7bb5a152749ca29669",
+    "url": "js/5.9c7bb5a1.js"
   },
   {
-    "revision": "0462e6ecc85d3300cb8b",
-    "url": "js/vendor.0462e6ec.js"
+    "revision": "aabd546083ed3242df85",
+    "url": "js/app.636d16cd.js"
+  },
+  {
+    "revision": "5512d23183f27549fff2",
+    "url": "js/vendor.5512d231.js"
   },
   {
     "revision": "f455efade78431797776357a527a30b7",
@@ -76,7 +124,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "statics/app-logo-128x128.png"
   },
   {
-    "revision": "004c825bd03d27469c68663041b8c8cc",
+    "revision": "56aa0c3b0b21a883d97c5a3c22087eed",
+    "url": "statics/data-flash.json"
+  },
+  {
+    "revision": "00aa04aca84e3059916750e049155c53",
     "url": "statics/data.json"
   },
   {
@@ -140,11 +192,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "statics/icons/safari-pinned-tab.svg"
   },
   {
+    "revision": "311f364e3cfb28c8b5523134362a6c47",
+    "url": "statics/moh-graphics/14-days.jpg"
+  },
+  {
     "revision": "939f6c2a56927b92fdd06a069bee8767",
     "url": "statics/moh-graphics/corona-signs.png"
   },
   {
     "revision": "7e6d8cb87c14c83f1c2fbba3d0004ea1",
     "url": "statics/moh-graphics/general-isolation-he.jpg"
+  },
+  {
+    "revision": "b4a6097848d9ef88aeade7ad53a93756",
+    "url": "statics/moh-graphics/pashka1.jpg"
   }
 ]);
